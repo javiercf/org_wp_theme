@@ -113,9 +113,9 @@ add_action('save_post', 'save_postdata');
 
 // Scrip Carrusel //
 
-wp_register_script('carousel', WP_CONTENT_URL . '/themes/organica/js/jquery.jcarousel.min.js', array('jquery'), 1.1, true);
-wp_register_script('fittext', WP_CONTENT_URL . '/themes/organica/js/jquery.fittext.js', array('jquery'), 1.1, true);
-wp_enqueue_script('main', WP_CONTENT_URL . '/themes/organica/js/min/main-min.js', array('carousel', 'fittext'), 1.2, true);
+wp_register_script('carousel', WP_CONTENT_URL . '/themes/organica/js/jquery.jcarousel.min.js', array('jquery'), 1.2, true);
+wp_register_script('fittext', WP_CONTENT_URL . '/themes/organica/js/jquery.fittext.js', array('jquery'), 1.2, true);
+wp_enqueue_script('main', WP_CONTENT_URL . '/themes/organica/js/min/main-min.js', array('carousel', 'fittext'), 2, true);
 
 // Leer más //
 
