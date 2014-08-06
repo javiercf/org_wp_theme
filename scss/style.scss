@@ -1,0 +1,614 @@
+/*
+Theme Name: Organica
+Author: Pablo Arias Burgos, Javier Cubides Ferrans
+Author URI: http://jcf-design.com, http://pabloarias.co;
+Description: Custom Theme for Organica.
+Version: 1.0
+*/
+
+@import '_reset';
+@import 'bourbon', 'neat';
+$green: rgb(190,196,56);
+$dgreen: #a4a930;
+$desktop: new-breakpoint(min-width 56.25em);
+$tablet: new-breakpoint(max-width 56.24em);
+$small: new-breakpoint(max-width 40.5em);
+$small-inv: new-breakpoint(min-width 40.5em);
+
+html, body{
+	font-family: 'Montserrat', sans-serif;
+}
+
+.container{
+	@include outer-container();
+	position: relative;
+}
+
+.row{
+	@include row();
+}
+
+p{
+	margin-bottom: 1em;
+}
+
+.readmore{
+	color: #666;
+	text-decoration: none;
+	float: right;
+	margin-top: 1em;
+
+	span{
+		color: $green;
+	}
+}
+
+.fixed{
+	position: fixed;
+	width: 100%;
+	background: rgba(#fff, 1);
+	left: 0;
+	top: 0;
+	transform: translateY(-100%);
+	z-index: 999;
+
+	&.show{
+		transition: transform 0.25s ease-in;
+		transform: translateY(0);
+	}
+}
+
+p, ul{
+	line-height: 1.4;
+	color: #7b7b7b;
+	font-size: 1.1em;
+
+	strong{
+		color: #333;
+	}
+
+	em{
+		color: $green;
+	}
+}
+
+#header{
+	text-align: center;
+	position: relative;
+	z-index: 99;
+	background:#fff;
+
+	nav{
+		display: block;
+		border-top: 1px solid $green;
+		padding: 0.5em 0 1em;
+		a{
+			color: #7C7C7C;
+			display: inline-block;
+			font-size: 0.7em;
+			text-align: center;
+			text-transform: uppercase;
+			text-decoration: none;
+			margin: 0 2em;
+			font-weight: 300;
+
+			span{
+				width:3.5em;
+				height: 3.5em;
+				display: block;
+				border: 1px solid transparent;
+				border-radius: 50%;
+				padding: 0.5em;
+				margin: 0.5em auto;
+			}
+
+			&:hover{
+				color: $green;
+
+				span{
+					border-color: $green;
+					path{
+						fill: $green;
+					}
+				}
+			}
+		}
+	}
+}
+
+#logo{
+	height: 70px;
+	margin: 1em;
+}
+
+.hero{
+	position: relative;
+	height: 100%;
+	padding-top: 70%;
+
+	@include media($desktop){
+		padding-top: 46%;
+		width: 100%;
+	}
+
+	.hero-slide{
+		position: absolute;
+		height: 0;
+		width: 100%;
+		padding-top: 70%;
+		top: 0;
+		left: 0;
+		overflow: hidden;
+		opacity: 0;
+		background:#333;
+		transition: opacity 1s ease-in;
+
+		@include media($desktop){
+			padding-top: 46%;
+		}
+
+		img{
+			display: block;
+			position: absolute;
+			//top: 0;
+			bottom: 0;
+			left: 0;
+			height: 100%;
+			max-width: none;
+			
+			@include media($desktop){
+				height: auto;
+				width: 100%;
+				min-width: 100%;
+			}
+
+		}
+
+		&.active{
+			opacity: 1;
+		}
+	}
+
+	.hero-box{
+		background:rgba($green, 0.75);
+		box-shadow: 2px 2px 0 rgba(#000, 0.25);
+		color: #fff;
+		bottom: 2em;
+		width: 100%;
+		position: absolute;
+		text-align: center;
+		@include pad();
+		z-index: 55;
+
+		h2{
+			font-size: 3.3em;
+			text-shadow: 2px 2px 0 rgba(#000, 0.2);
+		}
+
+		h3{
+			text-transform: uppercase;
+			text-shadow: 2px 2px 0 rgba(#000, 0.2);
+			font-size: 1.3em;
+			display: none;
+
+			@include media($desktop){
+				display: block;
+			}
+		}
+
+		a[class^="arrows-"]{
+			position: absolute;
+			top: 15%;
+			svg{
+				height: 2em;
+			}
+			@include media($desktop){
+				top: 35%;
+				svg{
+					height: auto;
+				}
+			}
+		}
+		.arrows-prev{
+			left: 1em;
+		}
+		.arrows-next{
+			right: 1em;
+		}
+	}
+}
+
+section{
+	border-bottom: 2px solid $green;
+	margin-bottom: 8px;
+	text-align: center;
+	padding: 4em 0;
+
+	&:last-of-type{
+		border-bottom: none;
+		margin-bottom: 0;
+	}
+
+	h1{
+		color: $green;
+		text-transform: uppercase;
+		font-size: 2em;
+		line-height: 1;
+	}
+
+	h2, h3{
+		display: inline-block;
+		color: #7b7b7b;
+		line-height: 1;
+		padding-bottom: 2em;
+		margin-bottom: 1em;
+	}
+
+	h2{
+		font-size: 1.2em;
+		border-bottom: 2px solid $green;
+	}
+
+	h3{
+		font-size: 0.9em;
+	}
+}
+
+.carousel-item div[class^="column-"]{
+	@include media($desktop){
+		height: 470px;
+	}
+}
+
+.grey-section{
+	background:#f3f3f3;
+	padding: 4em 0;
+	position: relative;
+
+	[class^="jcarousel-"]{
+		position: absolute;
+		top: 50%;	
+		z-index: 66;
+	}
+
+	.jcarousel-prev, .jcarousel-prev-1{
+		left: 1em;
+	}
+
+	.jcarousel-next, .jcarousel-next-1{
+		right: 1em;
+	}
+
+}
+
+.carousel{
+	overflow: hidden;
+
+	.carousel-wrap{
+		width: 2000em;
+		position: relative;
+	}
+
+	.container{
+		@include media($desktop){
+			float: left;
+		}
+	}
+}
+
+.work-carousel{
+	.carousel-wrap{
+		width: auto;
+		@include media($desktop){
+			width: 2000em;
+		}
+	}
+}
+
+#lineas-de-trabajo{
+	.jcarousel-prev, .jcarousel-next{
+		display: none;
+
+		@include media($desktop){
+			display: block;
+		}
+	}
+}
+
+.client-carousel{
+	margin: 0 3em;
+
+	.carousel-item{
+		height: 200px;
+		width: 15em;
+		float: left;
+		margin-left: 2em;
+
+		.client-logo{
+			height: 130px;
+			display: table-cell;
+			vertical-align: middle;
+		}
+
+		h1{
+			font-size: 0.8em;
+			color: #666;
+			margin-bottom: 1em;
+
+		}
+
+		p{
+			font-size: 70%;
+		}
+	}
+}
+
+div[class^="column-"]{
+	position: relative;
+	background:#fff;
+	border: 1px solid #ddd;
+	box-shadow: 3px 3px 3px #ddd;
+	border-radius: 5px 5px 0 0;
+	overflow: hidden;
+	margin-bottom: 1em;
+
+	img{
+		border-radius: 5px 5px 0 0;
+		display: block;
+	}
+
+	&:after{
+		content:'';
+		position: absolute;
+		top: 0.5em;
+		right: 0.5em;
+		width: 1.2em;
+		height: 1.2em;
+		background: url('img/send-icon.png') no-repeat;
+		background-size: cover;
+	}
+
+	h1{
+		position: absolute;
+		font-size: 1.2em;
+		background:$green;
+		height: 2em;
+		color: #fff;
+		top: 0;
+		left: 0;
+		right: 0;
+		padding: 0.5em;
+		text-align: left;
+		box-shadow: 0 2px 0 $dgreen;
+
+		&:before{
+			content:'';
+			width: 0;
+			height: 0;
+			border: 10px solid transparent;
+			border-top-color: $dgreen;
+			position: absolute;
+			z-index: 66;
+			bottom: -20px;
+			left: 0.5em;
+		}
+
+		&:after{
+			content: '';
+			width: 0;
+			height: 0;
+			border: 8px solid transparent;
+			border-top-color: $green;
+			position: absolute;
+			z-index: 67;
+			bottom: -16px;
+			left: 0.61em;
+		}
+
+	}
+
+	.content{
+		margin: 2em;
+		border-left: 1px solid #ddd;
+		padding: 0 0 0 2em;
+		text-align: left;
+		font-size: 70%;	
+
+		ul{
+			columns: 2;
+			margin-top: 1em;
+			li{
+				list-style: outside ;
+				position: relative;
+				padding-left: 2em;
+
+				&:before{
+					content: '';
+					width: 3px;
+					height: 3px;
+					border-radius: 50%;
+					background-color: $green;
+					position: absolute;
+					left: 0;
+					top: 35%;
+				}
+			}
+		}
+	}
+}
+
+.column-1, .span1{
+	//width: 21.59em;
+	//margin-right: 1.55em;
+	h5{
+		display: none;
+	}
+	@include media($tablet){
+		.img-container, .content-container{
+			@include span-columns(6);
+		}
+
+		.content-container{
+			padding-top: 4em;
+			.content{
+			}
+		}
+	}
+	@include media($small){
+		.img-container, .content-container{
+			@include span-columns(12);
+		}
+
+		.content-container{
+			padding-top: 0em;
+		}
+	}
+	@include media($desktop){
+		@include span-columns(4);
+		h5{
+			display: block;
+		}
+	}
+
+	.img-container{
+		img{
+			width: 100%;
+		}
+	}
+}
+
+.small-header{
+	margin-bottom: 1em;
+	@include media($desktop){
+		display: none;
+	}
+	h5{
+		display: block !important;
+	}
+
+}
+
+.column-2, .span2{
+	//width: 44.5em;
+	//margin-right: 1.55em;
+	@include media($desktop){
+		@include span-columns(8);
+
+	}
+
+}
+
+.in-column-7{
+	@include media($tablet){
+		@include span-columns(6);
+	}
+	@include media($desktop){
+		@include span-columns(7);
+		@include omega();
+	}
+	@include media($small){
+		width: 100%;
+		float: none;
+	}
+	padding: 2em 1em;
+
+	.content.content{
+		padding: 0;
+		padding-left: 2em;
+		min-height: 0;
+		border-left: 1px solid $green;
+
+		h4{
+			text-transform: uppercase;
+			font-size: 1.1em;
+			color:#333;
+			margin-bottom: 1em;
+		}
+	} 
+}
+
+.in-column-5{
+	@include media($desktop){
+		@include span-columns(5);
+	}
+	@include media($tablet){
+		@include span-columns(6);
+	}
+	@include media($small){
+		width: 100%;
+		float: none;
+	}
+}
+
+#nuestros-clientes{
+	position: relative;
+}
+
+footer{
+	header{
+		border-top: 5px solid #fff;
+		background:$green;
+		padding: 0.25em 0 0;
+		h5{
+			color:#fff;
+			line-height: 2;
+		}
+
+		.span2+.span1{
+			h5{
+				border-left: thin solid #fff;
+				padding-left: 1em;
+				margin: 0.25em 0;
+			}
+		}
+	}
+	.grey-section{
+		padding: 0 0 1em;
+		@include media($small-inv){
+			padding: 1em 0 1em;
+		}
+	}
+
+	.half{
+			text-align: center;
+			@include media($small-inv){
+				@include span-columns(6);
+				text-align: left;
+			}
+		}
+}
+
+form{
+	input[type="text"], textarea{
+		width: 100%;
+		border: 1px solid #ccc;
+		padding: .5em;
+		resize:none;
+		margin-bottom: 1em;
+	}
+
+	textarea{
+		height: 10em;
+	}
+
+	button{
+		border: none;
+		background:#666;
+		padding: .5em;
+		color:#fff;
+		float: right;
+	}
+
+}
+
+.copyright{
+	line-height: 4;
+	text-align: center;
+	font-size: 80%;
+	color:#666;
+}
+
+.contact-info{
+	font-size: 80%;
+	color: #666
+}
