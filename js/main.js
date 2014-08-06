@@ -1,6 +1,8 @@
 jQuery(function() {
 	jQuery('.hero h2').fitText(2, { minFontSize: '14px', maxFontSize: '53px' });
 
+	jQuery('.hero h3').fitText(3, { minFontSize: '14px', maxFontSize: '18.6px' });
+
 	jQuery('.work-carousel').jcarousel({
 		list: '.carousel-wrap',
 		items: '.carousel-item',
@@ -46,9 +48,9 @@ jQuery(function() {
         	jQuery('#mainNav').removeClass('show');
         	if (st > stickyHeaderTop && st > stickyHeaderTopScroll) {
 	            jQuery('#mainNav').addClass('fixed');
-	            jQuery('#header').css('paddingTop', jQuery('#mainNav').outerHeight());
+	            jQuery('#header').css('paddingBottom', jQuery('#mainNav').outerHeight());
 	        } else {
-	        	jQuery('#header').css('paddingTop', 0);
+	        	jQuery('#header').css('paddingBottom', 0);
 	            jQuery('#mainNav').removeClass('fixed');
 	        }
         }
@@ -56,7 +58,7 @@ jQuery(function() {
         	if (st > stickyHeaderTopScroll) {
 	            jQuery('#mainNav').addClass('show');
 	        } else{
-	        	jQuery('#header').css('paddingTop', 0);
+	        	jQuery('#header').css('paddingBottom', 0);
 	            jQuery('#mainNav').removeClass('show fixed');
 	        }
 

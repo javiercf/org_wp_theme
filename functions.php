@@ -69,7 +69,7 @@ function new_meta_boxes() {
 		$meta_box_value = $meta_box['std'];
 		echo'<input type="hidden" name="'.$meta_box['name'].'_noncename" id="'.$meta_box['name'].'_noncename" value="'.wp_create_nonce( plugin_basename(__FILE__) ).'" />';
 		echo'<h2>'.$meta_box['title'].'</h2>';
-		echo'<select name="'.$meta_box['name'].'"><option selected value="1">1 columna</option><option value="2">2 columnas</option></select><br />';
+		echo'<select name="'.$meta_box['name'].'"><option value="1">1 columna</option><option value="2">2 columnas</option></select><br />';
 		echo'<p><label for="'.$meta_box['name'].'">'.$meta_box['description'].'</label></p>';
 		}
 }

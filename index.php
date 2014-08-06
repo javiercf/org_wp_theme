@@ -19,7 +19,7 @@
     </div>
 </div>
 <section id="quienes-somos" class="white-section">
-	<div class="container">
+	<div class="container-full">
 		<article>
 			<header>
 				<h1>QUIENES SOMOS</h1>
@@ -32,13 +32,13 @@
 	</div>
 </section>
 <section id="lineas-de-trabajo" class="grey-section">
-<a href="#" class="jcarousel-prev">
-	<svg xmlns="http://www.w3.org/2000/svg" class="arrows" width="40" height="40" viewBox="0 0 40 40"><path fill-rule="evenodd" clip-rule="evenodd" fill="#666" d="M8.938 20.536l22.124-19.353-11.976 19.353 11.976 18.281-22.124-18.281z"/></svg>
-</a>
-<a href="#" class="jcarousel-next">
-	<svg class="arrows" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><path fill-rule="evenodd" clip-rule="evenodd" fill="#666" d="M31.062 19.464l-22.124 19.353 11.976-19.354-11.976-18.28 22.124 18.281z"/></svg>
-</a>
 	<div class="container">
+	<a href="#" class="jcarousel-prev">
+		<svg xmlns="http://www.w3.org/2000/svg" class="arrows" width="40" height="40" viewBox="0 0 40 40"><path fill-rule="evenodd" clip-rule="evenodd" fill="#666" d="M8.938 20.536l22.124-19.353-11.976 19.353 11.976 18.281-22.124-18.281z"/></svg>
+	</a>
+	<a href="#" class="jcarousel-next">
+		<svg class="arrows" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><path fill-rule="evenodd" clip-rule="evenodd" fill="#666" d="M31.062 19.464l-22.124 19.353 11.976-19.354-11.976-18.28 22.124 18.281z"/></svg>
+	</a>
 		<article>
 			<header>
 				<h1>Lineas de Trabajo</h1>
@@ -90,7 +90,7 @@
 	</div>
 </section>
 <section id="noticias">
-	<div class="container">
+	<div class="container-full">
 		<div class="column-full">
 			<h1>ECO-NOTICIAS</h1>
 			<div class="in-column-5">
@@ -110,13 +110,13 @@
 	</div>
 </section>
 <section id="nuestros-clientes" class="grey-section">
-<a href="#" class="jcarousel-prev-1">
+	<div class="container">
+	<a href="#" class="jcarousel-prev-1">
 	<svg xmlns="http://www.w3.org/2000/svg" class="arrows" width="40" height="40" viewBox="0 0 40 40"><path fill-rule="evenodd" clip-rule="evenodd" fill="#666" d="M8.938 20.536l22.124-19.353-11.976 19.353 11.976 18.281-22.124-18.281z"/></svg>
 </a>
 <a href="#" class="jcarousel-next-1">
 	<svg class="arrows" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><path fill-rule="evenodd" clip-rule="evenodd" fill="#666" d="M31.062 19.464l-22.124 19.353 11.976-19.354-11.976-18.28 22.124 18.281z"/></svg>
 </a>
-	<div class="container">
 		<article>
 			<header>
 				<h1>Nuestros Clientes</h1>

@@ -4,7 +4,8 @@ Author: Pablo Arias Burgos, Javier Cubides Ferrans
 Author URI: http://jcf-design.com, http://pabloarias.co;
 Description: Custom Theme for Organica.
 Github Theme URI: https://github.com/javiercf/org_wp_theme
-Version: 1.5.2
+Github Branch: Master
+Version: 1.5.3
 */
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -63,7 +64,8 @@ img {
   box-sizing: border-box; }
 
 html, body {
-  font-family: 'Montserrat', sans-serif; }
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.08rem; }
 
 .container {
   max-width: 68em;
@@ -74,6 +76,19 @@ html, body {
     content: "";
     display: table;
     clear: both; }
+
+.container-full {
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative; }
+  .container-full:after {
+    content: "";
+    display: table;
+    clear: both; }
+  @media screen and (min-width: 56.25em) {
+    .container-full {
+      padding: 0 3em; } }
 
 .row {
   display: block; }
@@ -96,19 +111,20 @@ p {
 .fixed {
   position: fixed;
   width: 100%;
-  background: white;
+  background: rgba(255, 255, 255, 0.85);
   left: 0;
-  top: 0;
+  top: -5em;
   -webkit-transform: translateY(-100%);
       -ms-transform: translateY(-100%);
           transform: translateY(-100%);
-  z-index: 999; }
+  z-index: 999;
+  -webkit-transition: all 0.25s ease-in;
+          transition: all 0.25s ease-in; }
   .fixed.show {
-    -webkit-transition: -webkit-transform 0.25s ease-in;
-            transition: transform 0.25s ease-in;
     -webkit-transform: translateY(0);
         -ms-transform: translateY(0);
-            transform: translateY(0); }
+            transform: translateY(0);
+    top: 0; }
 
 p, ul {
   line-height: 1.4;
@@ -127,7 +143,7 @@ p, ul {
   #header nav {
     display: block;
     border-top: 1px solid #bec438;
-    padding: 0.5em 0 1em; }
+    padding: 1.5em 0; }
     #header nav a {
       color: #7C7C7C;
       display: inline-block;
@@ -135,7 +151,7 @@ p, ul {
       text-align: center;
       text-transform: uppercase;
       text-decoration: none;
-      margin: 0 2em;
+      margin: 0 4em;
       font-weight: 300; }
       #header nav a span {
         width: 3.5em;
@@ -159,16 +175,16 @@ p, ul {
 .hero {
   position: relative;
   height: 100%;
-  padding-top: 70%; }
+  padding-top: 60%; }
   @media screen and (min-width: 56.25em) {
     .hero {
-      padding-top: 46%;
+      padding-top: 34%;
       width: 100%; } }
   .hero .hero-slide {
     position: absolute;
     height: 0;
     width: 100%;
-    padding-top: 70%;
+    padding-top: 60%;
     top: 0;
     left: 0;
     overflow: hidden;
@@ -178,7 +194,7 @@ p, ul {
             transition: opacity 1s ease-in; }
     @media screen and (min-width: 56.25em) {
       .hero .hero-slide {
-        padding-top: 46%; } }
+        padding-top: 34%; } }
     .hero .hero-slide img {
       display: block;
       position: absolute;
@@ -232,9 +248,9 @@ p, ul {
 
 section {
   border-bottom: 2px solid #bec438;
-  margin-bottom: 8px;
+  margin-bottom: 2px;
   text-align: center;
-  padding: 4em 0; }
+  padding: 2em 0; }
   section:last-of-type {
     border-bottom: none;
     margin-bottom: 0; }
@@ -247,8 +263,8 @@ section {
     display: inline-block;
     color: #7b7b7b;
     line-height: 1;
-    padding-bottom: 2em;
-    margin-bottom: 1em; }
+    padding-bottom: 1.5em;
+    margin-bottom: 1.5em; }
   section h2 {
     font-size: 1.2em;
     border-bottom: 2px solid #bec438; }
@@ -257,20 +273,22 @@ section {
 
 @media screen and (min-width: 56.25em) {
   .carousel-item div[class^="column-"] {
-    height: 470px; } }
+    height: 490px; } }
 
 .grey-section {
   background: #f3f3f3;
-  padding: 4em 0;
+  padding: 2em 0 1em;
   position: relative; }
   .grey-section [class^="jcarousel-"] {
     position: absolute;
     top: 50%;
     z-index: 66; }
+    .grey-section [class^="jcarousel-"] svg {
+      height: 2em; }
   .grey-section .jcarousel-prev, .grey-section .jcarousel-prev-1 {
-    left: 1em; }
+    left: 0; }
   .grey-section .jcarousel-next, .grey-section .jcarousel-next-1 {
-    right: 1em; }
+    right: 0; }
 
 .carousel {
   overflow: hidden; }
@@ -279,7 +297,8 @@ section {
     position: relative; }
   @media screen and (min-width: 56.25em) {
     .carousel .container {
-      float: left; } }
+      float: left;
+      padding: 0 3em; } }
 
 .work-carousel .carousel-wrap {
   width: auto; }
@@ -335,7 +354,7 @@ div[class^="column-"] {
             background-size: cover; }
   div[class^="column-"] h1 {
     position: absolute;
-    font-size: 1.2em;
+    font-size: 1em;
     background: #bec438;
     height: 2em;
     color: #fff;
@@ -367,11 +386,11 @@ div[class^="column-"] {
       bottom: -16px;
       left: 0.61em; }
   div[class^="column-"] .content {
-    margin: 2em;
+    margin: 1em 1em 1em 2em;
     border-left: 1px solid #ddd;
-    padding: 0 0 0 2em;
-    text-align: left;
-    font-size: 70%; }
+    padding: 0 1em 0 1em;
+    font-size: 70%;
+    text-align: justify; }
     div[class^="column-"] .content ul {
       -webkit-columns: 2;
          -moz-columns: 2;
@@ -504,14 +523,15 @@ div[class^="column-"] {
 footer header {
   border-top: 5px solid #fff;
   background: #bec438;
-  padding: 0.25em 0 0; }
+  padding: 0 0; }
   footer header h5 {
     color: #fff;
-    line-height: 2; }
+    line-height: 2;
+    font-size: 80%;
+    margin: 0.25em 0; }
   footer header .span2 + .span1 h5 {
     border-left: thin solid #fff;
-    padding-left: 1em;
-    margin: 0.25em 0; }
+    padding-left: 1em; }
 footer .grey-section {
   padding: 0 0 1em; }
   @media screen and (min-width: 40.5em) {
@@ -545,10 +565,11 @@ form button {
   float: right; }
 
 .copyright {
-  line-height: 4;
   text-align: center;
-  font-size: 80%;
   color: #666; }
+  .copyright p {
+    font-size: 70%;
+    line-height: 4; }
 
 .contact-info {
   font-size: 80%;

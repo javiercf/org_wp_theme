@@ -1,12 +1,12 @@
 <footer id="contacto">
 	<header>
-		<div class="container">
+		<div class="container-full">
 			<div class="span2"><h5>Encuentranos</h5></div>
 			<div class="span1"><h5>Contactanos</h5></div>
 		</div>
 	</header>
 	<div class="grey-section">
-		<div class="container">
+		<div class="container-full">
 			<div class="span2">
 				<div class="row">
 					<div class="half"><img src="<?php echo get_template_directory_uri() ?>/img/mapa.png" alt=""></div>
@@ -39,8 +39,8 @@
 		</div>
 	</div>
 	<div class="copyright">
-		<div class="container">
-			All works &copy; ORGANICA S.A.S. 2014 Please do not reproduce without the expressed written consent of ORGANICA S.A.S. 2014
+		<div class="container-full">
+			<p>All works &copy; ORGANICA S.A.S. 2014 Please do not reproduce without the expressed written consent of ORGANICA S.A.S. 2014</p>
 		</div>
 	</div>
 </footer>
