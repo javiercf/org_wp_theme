@@ -4,8 +4,7 @@ Author: Pablo Arias Burgos, Javier Cubides Ferrans
 Author URI: http://jcf-design.com, http://pabloarias.co;
 Description: Custom Theme for Organica.
 Github Theme URI: https://github.com/javiercf/org_wp_theme
-Version: 1.5
-GitHub Branch: master
+Version: 1.5.1
 */
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -298,7 +297,7 @@ section {
   margin: 0 3em; }
   .client-carousel .carousel-item {
     height: 200px;
-    width: 15em;
+    width: 13em;
     float: left;
     margin-left: 2em; }
     .client-carousel .carousel-item .client-logo {
