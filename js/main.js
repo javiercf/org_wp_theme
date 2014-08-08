@@ -1,7 +1,7 @@
 jQuery(function() {
-	jQuery('.hero h2').fitText(2, { minFontSize: '14px', maxFontSize: '48px' });
+	jQuery('.hero h2').fitText(2, { minFontSize: '14px', maxFontSize: '40px' });
 
-	jQuery('.hero h3').fitText(3, { minFontSize: '14px', maxFontSize: '18.1px' });
+	jQuery('.hero h3').fitText(3, { minFontSize: '11px', maxFontSize: '14px' });
 
 	jQuery('.work-carousel').jcarousel({
 		list: '.carousel-wrap',

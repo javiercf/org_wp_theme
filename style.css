@@ -5,7 +5,7 @@ Author URI: http://jcf-design.com, http://pabloarias.co;
 Description: Custom Theme for Organica.
 Github Theme URI: https://github.com/javiercf/org_wp_theme
 Github Branch: Master
-Version: 1.5.4
+Version: 1.5.5
 */
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -67,15 +67,18 @@ html, body {
   font-family: 'Lato', sans-serif;
   letter-spacing: 0.03rem; }
 
-.container {
+.container, .outer-container {
   max-width: 68em;
   margin-left: auto;
   margin-right: auto;
   position: relative; }
-  .container:after {
+  .container:after, .outer-container:after {
     content: "";
     display: table;
     clear: both; }
+
+.outer-container {
+  max-width: 80em; }
 
 .container-full {
   max-width: 68em;
@@ -218,16 +221,18 @@ p, ul {
     width: 100%;
     position: absolute;
     text-align: center;
-    padding: 2.35765%;
+    padding: 1em;
     z-index: 55; }
     .hero .hero-box h2 {
-      font-size: 3.3em;
-      text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2); }
+      font-size: 3em;
+      text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+      letter-spacing: .3rem; }
     .hero .hero-box h3 {
       text-transform: uppercase;
       text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
       font-size: 1.3em;
-      display: none; }
+      display: none;
+      letter-spacing: .16rem; }
       @media screen and (min-width: 56.25em) {
         .hero .hero-box h3 {
           display: block; } }
@@ -238,7 +243,7 @@ p, ul {
         height: 2em; }
       @media screen and (min-width: 56.25em) {
         .hero .hero-box a[class^="arrows-"] {
-          top: 35%; }
+          top: 30%; }
           .hero .hero-box a[class^="arrows-"] svg {
             height: auto; } }
     .hero .hero-box .arrows-prev {
@@ -251,31 +256,32 @@ section {
           box-shadow: 0 0 0 4px white, 0 0 0 5px #bec438;
   margin-bottom: 3px;
   text-align: center;
-  padding: 2em 0; }
+  padding: 3em 0; }
   section:last-of-type {
     margin-bottom: 0; }
   section h1 {
     color: #bec438;
     text-transform: uppercase;
-    font-size: 2em;
-    line-height: 1.2;
-    font-weight: 300; }
+    font-size: 1.7em;
+    line-height: 1.1;
+    font-weight: 400;
+    letter-spacing: 0.1rem; }
   section h2, section h3 {
     display: inline-block;
-    font-weight: 300;
+    font-weight: 400;
     color: #7b7b7b;
     line-height: 1;
     padding-bottom: 1.5em;
     margin-bottom: 1.5em; }
   section h2 {
-    font-size: 1.2em;
+    font-size: 1em;
     border-bottom: 1px solid #bec438; }
   section h3 {
-    font-size: 0.9em; }
+    font-size: 0.8em; }
 
 @media screen and (min-width: 56.25em) {
   .carousel-item div[class^="column-"] {
-    height: 430px; } }
+    height: 440px; } }
 
 .grey-section {
   background: #f3f3f3;
@@ -348,7 +354,7 @@ div[class^="column-"] {
   div[class^="column-"]:after {
     content: '';
     position: absolute;
-    top: 0.5em;
+    top: 0.25em;
     right: 0.5em;
     width: 1.2em;
     height: 1.2em;
@@ -357,14 +363,15 @@ div[class^="column-"] {
             background-size: cover; }
   div[class^="column-"] h1 {
     position: absolute;
-    font-size: 1em;
+    font-size: 0.8em;
     background: #bec438;
     height: 2em;
     color: #fff;
     top: 0;
     left: 0;
     right: 0;
-    padding: 0.5em;
+    padding: 0.5em 0.5em 0.5em 1.2em;
+    letter-spacing: 0.1rem;
     text-align: left;
     -webkit-box-shadow: 0 2px 0 #a4a930;
             box-shadow: 0 2px 0 #a4a930; }
@@ -372,22 +379,22 @@ div[class^="column-"] {
       content: '';
       width: 0;
       height: 0;
-      border: 10px solid transparent;
+      border: 6px solid transparent;
       border-top-color: #a4a930;
       position: absolute;
       z-index: 66;
-      bottom: -20px;
-      left: 0.5em; }
+      bottom: -12px;
+      left: 1em; }
     div[class^="column-"] h1:after {
       content: '';
       width: 0;
       height: 0;
-      border: 8px solid transparent;
+      border: 4px solid transparent;
       border-top-color: #bec438;
       position: absolute;
       z-index: 67;
-      bottom: -16px;
-      left: 0.61em; }
+      bottom: -8px;
+      left: 1.2em; }
   div[class^="column-"] .content {
     margin: 1em 1em 1em 2em;
     border-left: 1px solid #ddd;
@@ -400,7 +407,7 @@ div[class^="column-"] {
               columns: 2;
       margin-top: 1em; }
       div[class^="column-"] .content ul li {
-        list-style: outside;
+        list-style: none outside;
         position: relative;
         padding-left: 2em; }
         div[class^="column-"] .content ul li:before {
@@ -530,11 +537,10 @@ footer header {
   footer header h5 {
     color: #fff;
     line-height: 2;
-    font-size: 80%;
-    margin: 0.25em 0; }
-  footer header .span2 + .span1 h5 {
+    font-size: 70%;
+    margin: 0.25em 0;
     border-left: thin solid #fff;
-    padding-left: 1em; }
+    padding-left: 1.5em; }
 footer .grey-section {
   padding: 0 0 1em; }
   @media screen and (min-width: 40.5em) {
@@ -559,7 +565,7 @@ form input[type="text"], form textarea {
   resize: none;
   margin-bottom: 1em; }
 form textarea {
-  height: 10em; }
+  height: 6em; }
 form button {
   border: none;
   background: #666;
@@ -575,5 +581,5 @@ form button {
     line-height: 4; }
 
 .contact-info {
-  font-size: 80%;
+  font-size: 70%;
   color: #666666; }
