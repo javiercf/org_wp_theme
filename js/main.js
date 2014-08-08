@@ -1,7 +1,7 @@
 jQuery(function() {
-	jQuery('.hero h2').fitText(2, { minFontSize: '14px', maxFontSize: '53px' });
+	jQuery('.hero h2').fitText(2, { minFontSize: '14px', maxFontSize: '48px' });
 
-	jQuery('.hero h3').fitText(3, { minFontSize: '14px', maxFontSize: '18.6px' });
+	jQuery('.hero h3').fitText(3, { minFontSize: '14px', maxFontSize: '18.1px' });
 
 	jQuery('.work-carousel').jcarousel({
 		list: '.carousel-wrap',
@@ -91,4 +91,22 @@ jQuery('.hero .arrows-prev').on('click', function(e){
 		jQuery('.hero-slide').removeClass('active');
 		last.addClass('active');
 	}
+});
+
+jQuery(function() {
+  jQuery('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') === this.pathname.replace(/^\//,'') && location.hostname === this.hostname) {
+      var target = jQuery(this.hash);
+      target = target.length ? target : jQuery('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        jQuery('html,body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        setTimeout(function(){
+        	jQuery('#mainNav').removeClass('show');
+        }, 1500);
+        return false;
+      }
+    }
+  });
 });

@@ -18,8 +18,8 @@ $small: new-breakpoint(max-width 40.5em);
 $small-inv: new-breakpoint(min-width 40.5em);
 
 html, body{
-	font-family: 'Montserrat', sans-serif;
-	letter-spacing: 0.08rem;
+	font-family: 'Lato', sans-serif;
+	letter-spacing: 0.03rem;
 }
 
 .container{
@@ -75,7 +75,7 @@ p{
 p, ul{
 	line-height: 1.4;
 	color: #7b7b7b;
-	font-size: 1.1em;
+	font-size: 1em;
 
 	strong{
 		color: #333;
@@ -154,7 +154,7 @@ p, ul{
 		left: 0;
 		overflow: hidden;
 		opacity: 0;
-		background:#333;
+		background:#fff;
 		transition: opacity 1s ease-in;
 
 		@include media($desktop){
@@ -233,13 +233,13 @@ p, ul{
 }
 
 section{
-	border-bottom: 2px solid $green;
-	margin-bottom: 2px;
+	box-shadow: 0 0 0 4px #fff, 0 0 0 5px $green;
+	margin-bottom: 3px;
 	text-align: center;
 	padding: 2em 0;
 
 	&:last-of-type{
-		border-bottom: none;
+		//box-shadow: 0 1px 0 2px #fff;
 		margin-bottom: 0;
 	}
 
@@ -247,11 +247,13 @@ section{
 		color: $green;
 		text-transform: uppercase;
 		font-size: 2em;
-		line-height: 1;
+		line-height: 1.2;
+		font-weight: 300;
 	}
 
 	h2, h3{
 		display: inline-block;
+		font-weight: 300;
 		color: #7b7b7b;
 		line-height: 1;
 		padding-bottom: 1.5em;
@@ -260,7 +262,7 @@ section{
 
 	h2{
 		font-size: 1.2em;
-		border-bottom: 2px solid $green;
+		border-bottom: 1px solid $green;
 	}
 
 	h3{
@@ -270,7 +272,7 @@ section{
 
 .carousel-item div[class^="column-"]{
 	@include media($desktop){
-		height: 490px;
+		height: 430px;
 	}
 }
 
@@ -338,7 +340,6 @@ section{
 	margin: 0 3em;
 
 	.carousel-item{
-		height: 200px;
 		width: 13em;
 		float: left;
 		margin-left: 2em;
@@ -347,6 +348,10 @@ section{
 			height: 130px;
 			display: table-cell;
 			vertical-align: middle;
+
+			img{
+				width: 100%;
+			}
 		}
 
 		h1{

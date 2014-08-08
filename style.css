@@ -64,8 +64,8 @@ img {
   box-sizing: border-box; }
 
 html, body {
-  font-family: 'Montserrat', sans-serif;
-  letter-spacing: 0.08rem; }
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 0.03rem; }
 
 .container {
   max-width: 68em;
@@ -129,7 +129,7 @@ p {
 p, ul {
   line-height: 1.4;
   color: #7b7b7b;
-  font-size: 1.1em; }
+  font-size: 1em; }
   p strong, ul strong {
     color: #333; }
   p em, ul em {
@@ -189,7 +189,7 @@ p, ul {
     left: 0;
     overflow: hidden;
     opacity: 0;
-    background: #333;
+    background: #fff;
     -webkit-transition: opacity 1s ease-in;
             transition: opacity 1s ease-in; }
     @media screen and (min-width: 56.25em) {
@@ -247,33 +247,35 @@ p, ul {
       right: 1em; }
 
 section {
-  border-bottom: 2px solid #bec438;
-  margin-bottom: 2px;
+  -webkit-box-shadow: 0 0 0 4px white, 0 0 0 5px #bec438;
+          box-shadow: 0 0 0 4px white, 0 0 0 5px #bec438;
+  margin-bottom: 3px;
   text-align: center;
   padding: 2em 0; }
   section:last-of-type {
-    border-bottom: none;
     margin-bottom: 0; }
   section h1 {
     color: #bec438;
     text-transform: uppercase;
     font-size: 2em;
-    line-height: 1; }
+    line-height: 1.2;
+    font-weight: 300; }
   section h2, section h3 {
     display: inline-block;
+    font-weight: 300;
     color: #7b7b7b;
     line-height: 1;
     padding-bottom: 1.5em;
     margin-bottom: 1.5em; }
   section h2 {
     font-size: 1.2em;
-    border-bottom: 2px solid #bec438; }
+    border-bottom: 1px solid #bec438; }
   section h3 {
     font-size: 0.9em; }
 
 @media screen and (min-width: 56.25em) {
   .carousel-item div[class^="column-"] {
-    height: 490px; } }
+    height: 430px; } }
 
 .grey-section {
   background: #f3f3f3;
@@ -315,7 +317,6 @@ section {
 .client-carousel {
   margin: 0 3em; }
   .client-carousel .carousel-item {
-    height: 200px;
     width: 13em;
     float: left;
     margin-left: 2em; }
@@ -323,6 +324,8 @@ section {
       height: 130px;
       display: table-cell;
       vertical-align: middle; }
+      .client-carousel .carousel-item .client-logo img {
+        width: 100%; }
     .client-carousel .carousel-item h1 {
       font-size: 0.7em;
       color: #666;
