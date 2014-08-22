@@ -114,7 +114,7 @@ add_action('save_post', 'save_postdata');
 // Scrip Carrusel //
 
 wp_register_script('mousewheel', get_bloginfo('template_url') . '/js/jquery.mousewheel.js', array('jquery'), 1.1, true);
-wp_register_script('intent', get_bloginfo('template_url') . '/js/mwheelintent.js', array('jquery'), 1.1, true);
+wp_register_script('intent', get_bloginfo('template_url') . '/js/mwheelIntent.js', array('jquery'), 1.1, true);
 wp_register_script('scrollpane', get_bloginfo('template_url') . '/js/jquery.jscrollpane.min.js', array('jquery', 'mousewheel', 'intent'), 1.1, true);
 wp_register_script('carousel', get_bloginfo('template_url') . '/js/jquery.jcarousel.min.js', array('jquery'), 1.1, true);
 wp_register_script('fittext', get_bloginfo('template_url') . '/js/jquery.fittext.js', array('jquery'), 1.1, true);

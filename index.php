@@ -147,14 +147,16 @@ if(isset($_POST['submitted'])) {
 				<img src="<?php echo get_template_directory_uri() ?>/img/eco-noticias.jpg" alt="">
 			</div>
 			<div class="in-column-7">
-			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+			<div class="news-container">
+				<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 				<div class="content">
 					<h4><?php the_title() ?></h4>
-					<?php the_excerpt() ?>
+					<?php the_content() ?>
 				</div>
 				<?php endwhile; else: ?>
 <p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
 <?php endif; ?>
+			</div>
 			</div>
 		</div>
 	</div>

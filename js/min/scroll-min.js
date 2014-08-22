@@ -1,1 +1,1 @@
-jQuery(function(){jQuery(".content-container").jScrollPane()});
+jQuery(window).width()>900&&(jQuery(function(){jQuery(".content-container, .news-container").jScrollPane()}),jQuery(function(){jQuery(".content-container, .news-container").each(function(){var n=jQuery(this).data("jsp"),e;jQuery(window).bind("resize",function(){e||(e=setTimeout(function(){n.reinitialise(),e=null},50))})})}));
