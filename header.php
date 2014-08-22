@@ -4,6 +4,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="UTF-8">
 	<title><?php bloginfo('title');?></title>
+	<link rel="shortcut icon" href="<?php echo get_template_directory_uri() ?>/img/Icono.jpg">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_uri() ?>">
 	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>	
 <?php wp_head() ?>
