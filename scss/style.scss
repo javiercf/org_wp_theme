@@ -5,7 +5,7 @@ Author URI: http://jcf-design.com, http://pabloarias.co;
 Description: Custom Theme for Organica.
 Github Theme URI: https://github.com/javiercf/org_wp_theme
 Github Branch: Master
-Version: 1.5.5
+Version: 1.0
 */
 
 @import '_reset';
@@ -44,12 +44,13 @@ html, body{
 }
 
 .container{
-	max-width: 60em;
+	max-width: 56.3em;
 	
 
 	.container{
 		padding: 0;
-		max-width: 58em;
+		max-width: 54.3em;
+
 	}
 
 	@include media($small-inv){
@@ -809,11 +810,33 @@ div[class^="column-"]{
 
 #nuestros-clientes{
 	position: relative;
+	padding-bottom: 33px;
 }
 
 footer{
-	@include media($small-inv){
+	@include media($desktop){
+		&.sticky-footer{
+			position: fixed;
+			width: 100%;
+			bottom: 0;
+			transform: translateY(311px);
+			z-index: 99;
 
+			&:hover{
+				transition: all 0.25s ease-in;
+				transform: translateY(0);
+			}
+		}
+
+		&.fixed-footer{
+			position: relative;
+			transform: translateY(0);
+			transition: none;
+		}
+
+		&.trans{
+			transition: all 0.25s ease-in;
+		}
 	}
 	header{
 		border-top: 5px solid #fff;
@@ -877,6 +900,8 @@ form{
 .copyright{
 	text-align: center;
 	color:#666;
+	background:#fff;
+
 	p{
 		font-size: 60%;
 		line-height: 1.2;

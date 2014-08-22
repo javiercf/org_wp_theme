@@ -37,7 +37,8 @@ jQuery(function() {
     var stickyHeaderTop = jQuery('#mainNav').offset().top + jQuery('#mainNav').outerHeight();
     var stickyHeaderTopScroll = jQuery('#mainNav').offset().top;
 
-    var lastScrollTop = 0, delta = 10;
+    var lastScrollTop = 0, delta = 5;
+    var footerScroll = jQuery(document).height()-(jQuery('#contacto').outerHeight()+jQuery('#mainNav').outerHeight()+224);
 
     jQuery(window).scroll(function () {
     	var st = jQuery(this).scrollTop();
@@ -48,9 +49,7 @@ jQuery(function() {
         	jQuery('#mainNav').removeClass('show');
         	if (st > stickyHeaderTop && st > stickyHeaderTopScroll) {
 	            jQuery('#mainNav').addClass('fixed');
-	            if(jQuery(window).width() > '68em'){
-	            	jQuery('#header').css('paddingBottom', jQuery('#mainNav').outerHeight());
-	            }
+	            jQuery('#header').css('paddingBottom', jQuery('#mainNav').outerHeight());
 	        } else {
 	        	jQuery('#header').css('paddingBottom', 0);
 	            jQuery('#mainNav').removeClass('fixed');
@@ -65,7 +64,20 @@ jQuery(function() {
 	        }
 
         }
+        if(st >= footerScroll){
+        	jQuery('#contacto').removeClass('sticky-footer trans').addClass('fixed-footer');
+        	jQuery('#nuestros-clientes').css('paddingBottom', 0);
+        }
+        else{
+        	jQuery('#contacto').removeClass('fixed-footer').addClass('sticky-footer');
+        	jQuery('#nuestros-clientes').css('paddingBottom', 33);
+        	setTimeout(function(){
+        		jQuery('#contacto').addClass('trans');
+        	});
+        }
         lastScrollTop = st;
+        console.log(st, footerScroll);
+        //console.log(st, (jQuery(document).height()-(jQuery('#contacto').outerHeight()+344)))
     });
 });
 function nextSlide(){

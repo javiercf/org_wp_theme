@@ -1,4 +1,4 @@
-<footer id="contacto">
+<footer id="contacto" class="sticky-footer trans">
 	<header>
 		<div class="container-full">
 			<div class="span2"><h5>Encuentranos</h5></div>
