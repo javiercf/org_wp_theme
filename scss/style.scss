@@ -430,12 +430,6 @@ section{
 	}
 }
 
-.carousel-item div[class^="column-"]{
-	@include media($desktop){
-		height: 440px;
-	}
-}
-
 .grey-section{
 	background:#f3f3f3;
 	padding: 2em 0 1em;
@@ -661,6 +655,10 @@ div[class^="column-"]{
 
 	.content-container{
 		background:#fff;
+		overflow: auto;
+		@include media($desktop){
+			height: 130px;
+		}
 	}
 
 	.content{

@@ -113,11 +113,15 @@ add_action('save_post', 'save_postdata');
 
 // Scrip Carrusel //
 
+wp_register_script('mousewheel', get_bloginfo('template_url') . '/js/jquery.mousewheel.js', array('jquery'), 1.1, true);
+wp_register_script('intent', get_bloginfo('template_url') . '/js/mwheelintent.js', array('jquery'), 1.1, true);
+wp_register_script('scrollpane', get_bloginfo('template_url') . '/js/jquery.jscrollpane.min.js', array('jquery', 'mousewheel', 'intent'), 1.1, true);
 wp_register_script('carousel', get_bloginfo('template_url') . '/js/jquery.jcarousel.min.js', array('jquery'), 1.1, true);
 wp_register_script('fittext', get_bloginfo('template_url') . '/js/jquery.fittext.js', array('jquery'), 1.1, true);
 wp_register_script('google-maps', 'https://maps.googleapis.com/maps/api/js?v=3.exp', true );
 wp_enqueue_script('main', get_bloginfo('template_url') . '/js/min/main-min.js', array('carousel', 'fittext', 'google-maps'), 1.1, true);
-
+wp_enqueue_script('scroll', get_bloginfo('template_url') . '/js/min/scroll-min.js', array('jquery', 'scrollpane'));
+wp_enqueue_style('scroll_style', get_bloginfo('template_url') . '/css/jquery.jscrollpane.css');
 // Leer más //
 
 function new_excerpt_more( $more ) {

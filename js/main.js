@@ -76,8 +76,6 @@ jQuery(function() {
         	});
         }
         lastScrollTop = st;
-        console.log(st, footerScroll);
-        //console.log(st, (jQuery(document).height()-(jQuery('#contacto').outerHeight()+344)))
     });
 });
 function nextSlide(){

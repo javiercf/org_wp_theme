@@ -127,8 +127,6 @@ section h2 { font-size: 0.7em; border-bottom: 1px solid #bec438; }
 section h3 { font-size: 0.7em; }
 @media screen and (min-width: 40.5em) { section h3 { font-size: 0.8em; } }
 
-@media screen and (min-width: 56.25em) { .carousel-item div[class^="column-"] { height: 440px; } }
-
 .grey-section { background: #f3f3f3; padding: 2em 0 1em; position: relative; }
 .grey-section [class^="jcarousel-"] { position: absolute; top: 50%; z-index: 66; }
 .grey-section [class^="jcarousel-"] svg { height: 2em; }
@@ -171,7 +169,8 @@ div[class^="column-"] h1 { position: relative; font-size: 0.8em; background: #be
 @media screen and (min-width: 40.5em) { div[class^="column-"] h1 { position: absolute; margin-bottom: 0; cursor: auto; } }
 div[class^="column-"] h1:before { content: ''; width: 0; height: 0; border: 6px solid transparent; border-top-color: #a4a930; position: absolute; z-index: 66; bottom: -12px; left: 1em; }
 div[class^="column-"] h1:after { content: ''; width: 0; height: 0; border: 4px solid transparent; border-top-color: #bec438; position: absolute; z-index: 67; bottom: -8px; left: 1.2em; }
-div[class^="column-"] .content-container { background: #fff; }
+div[class^="column-"] .content-container { background: #fff; overflow: auto; }
+@media screen and (min-width: 56.25em) { div[class^="column-"] .content-container { height: 130px; } }
 div[class^="column-"] .content { margin: 1em 1em 1em 2em; border-left: 1px solid #ddd; padding: 0 1em 0 1em; font-size: 70%; text-align: left; }
 @media screen and (min-width: 56.25em) { div[class^="column-"] .content { text-align: justify; } }
 div[class^="column-"] .content ul { margin-top: 1em; }
