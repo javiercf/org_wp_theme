@@ -115,7 +115,8 @@ add_action('save_post', 'save_postdata');
 
 wp_register_script('carousel', get_bloginfo('template_url') . '/js/jquery.jcarousel.min.js', array('jquery'), 1.1, true);
 wp_register_script('fittext', get_bloginfo('template_url') . '/js/jquery.fittext.js', array('jquery'), 1.1, true);
-wp_enqueue_script('main', get_bloginfo('template_url') . '/js/min/main-min.js', array('carousel', 'fittext'), 1.1, true);
+wp_register_script('google-maps', 'https://maps.googleapis.com/maps/api/js?v=3.exp', true );
+wp_enqueue_script('main', get_bloginfo('template_url') . '/js/min/main-min.js', array('carousel', 'fittext', 'google-maps'), 1.1, true);
 
 // Leer más //
 

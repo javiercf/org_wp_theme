@@ -1,4 +1,51 @@
+<?php
+if(isset($_POST['submitted'])) {
+	if(trim($_POST['name']) === '') {
+		$nameError = 'Please enter your name.';
+		$hasError = true;
+	} else {
+		$name = trim($_POST['name']);
+	}
+
+	if(trim($_POST['email']) === '')  {
+		$emailError = 'Please enter your email address.';
+		$hasError = true;
+	} else if (!preg_match("/^[[:alnum:]][a-z0-9_.-]*@[a-z0-9.-]+\.[a-z]{2,4}$/i", trim($_POST['email']))) {
+		$emailError = 'You entered an invalid email address.';
+		$hasError = true;
+	} else {
+		$email = trim($_POST['email']);
+	}
+
+	$tel = trim($_POST['tel']);
+
+	if(trim($_POST['mensaje']) === '') {
+		$commentError = 'Please enter a message.';
+		$hasError = true;
+	} else {
+		if(function_exists('stripslashes')) {
+			$comments = stripslashes(trim($_POST['mensaje']));
+		} else {
+			$comments = trim($_POST['mensaje']);
+		}
+	}
+
+	if(!isset($hasError)) {
+		$emailTo = get_option('tz_email');
+		if (!isset($emailTo) || ($emailTo == '') ){
+			$emailTo = get_option('admin_email');
+		}
+		$subject = 'Mensaje de  contacto de '.$name;
+		$body = "Name: $name \n\nEmail: $email \n\nTelefono: $tel \n\nMensaje: $comments";
+		$headers = 'From: '.$name.' <'.$emailTo.'>' . "\r\n" . 'Reply-To: ' . $email;
+
+		wp_mail($emailTo, $subject, $body, $headers);
+		$emailSent = true;
+	}
+
+} ?>
 <?php get_header() ?>
+
 <div class="hero">
 	<div class="hero-slide active">
 		<img src="<?php echo get_template_directory_uri() ?>/img/edificios.jpg" alt="">
@@ -18,8 +65,9 @@
 		</div>
     </div>
 </div>
+
 <section id="quienes-somos" class="white-section">
-	<div class="container-full">
+	<div class="container">
 		<article>
 			<header>
 				<h1>QUIENES SOMOS</h1>
@@ -60,16 +108,18 @@
 						
 				        <div class="column-<?php echo get_post_meta( get_the_ID(), 'columna', true ); ?> item">
 				        	<h1><?php the_title() ?></h1>
-				            <div class="img-container">
-				            	<?php if ( has_post_thumbnail() ) {
-		                        the_post_thumbnail('full');
-			                    } ?>
+				            <div class="item-wrap">
+				            	<div class="img-container">
+					            	<?php if ( has_post_thumbnail() ) {
+				                        the_post_thumbnail('full');
+					                    } ?>
+						            </div>
+				                    <div class="content-container">
+				                    	<div class="content">
+					                    	<?php the_content() ?>
+					                    </div>
+				                    </div>
 				            </div>
-		                    <div class="content-container">
-		                    	<div class="content">
-			                    	<?php the_content() ?>
-			                    </div>
-		                    </div>
 		                </div>
 		                <?php
 		                $column_count +=  get_post_meta( get_the_ID(), 'columna', true );
@@ -90,7 +140,7 @@
 	</div>
 </section>
 <section id="noticias">
-	<div class="container-full">
+	<div class="container">
 		<div class="column-full">
 			<h1>ECO-NOTICIAS</h1>
 			<div class="in-column-5">
@@ -117,7 +167,7 @@
 <a href="#" class="jcarousel-next-1">
 	<svg class="arrows" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><path fill-rule="evenodd" clip-rule="evenodd" fill="#666" d="M31.062 19.464l-22.124 19.353 11.976-19.354-11.976-18.28 22.124 18.281z"/></svg>
 </a>
-		<article class="container">
+		<div class="container">
 			<header>
 				<h1>Nuestros Clientes</h1>
 				<h3>Este es el listado de nuestros clientes más recientes.</h3>
@@ -144,7 +194,7 @@
 		            <?php endwhile; ?>
 				</div>
 			</div>
-		</article>
+		</div>
 	</div>
 </section>
 <?php get_footer() ?>

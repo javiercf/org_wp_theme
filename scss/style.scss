@@ -12,8 +12,10 @@ Version: 1.5.5
 @import 'bourbon', 'neat';
 $green: rgb(190,196,56);
 $dgreen: #a4a930;
+$desktop-lg: new-breakpoint(min-width 68em);
 $desktop: new-breakpoint(min-width 56.25em);
 $tablet: new-breakpoint(max-width 56.24em);
+$nav-weird: new-breakpoint(min-width 48em);
 $small: new-breakpoint(max-width 40.5em);
 $small-inv: new-breakpoint(min-width 40.5em);
 
@@ -22,21 +24,54 @@ html, body{
 	letter-spacing: 0.03rem;
 }
 
+#map-canvas{
+	height: 190px;
+	width: 100%;
+	border: 2px solid #fff;
+}
 
-.container, .outer-container{
+
+.container, .outer-container, .container-full{
 	@include outer-container();
 	position: relative;
 }
 
 .outer-container{
+	max-width: 62em;
+	@include media($desktop-lg){
 		max-width: 80em;
+	}
+}
+
+.container{
+	max-width: 60em;
+	
+
+	.container{
+		padding: 0;
+		max-width: 58em;
+	}
+
+	@include media($small-inv){
+		padding: 0 1em;
+	}
+	
+	@include media($desktop-lg){
+		max-width: 68em;
+		.container{
+			max-width: 66em;
+		}
+	}
 }
 
 .container-full{
 	@include outer-container();
 	position: relative;
-	@include media($desktop){
-		padding: 0 3em;
+	max-width: 60em;
+	
+	@include media($desktop-lg){
+		max-width: 68em;
+		padding: 0 1em;
 	}
 }
 
@@ -44,10 +79,21 @@ html, body{
 
 .row{
 	@include row();
+	padding: 0 1em;
+	@include media($desktop-lg){
+		padding: 0;
+	}
+}
+
+.span2{
+	.row{
+		padding: 0;
+	}
 }
 
 p{
 	margin-bottom: 1em;
+	font-weight: 300;
 }
 
 .readmore{
@@ -62,18 +108,20 @@ p{
 }
 
 .fixed{
-	position: fixed;
-	width: 100%;
-	background: rgba(#fff, 0.85);
-	left: 0;
-	top: -5em;
-	transform: translateY(-100%);
-	z-index: 999;
-	transition: all 0.25s ease-in;
+	@include media($desktop-lg){
+		position: fixed !important;
+		width: 100%;
+		background: rgba(#fff, 0.85);
+		left: 0;
+		top: -5em;
+		transform: translateY(-100%);
+		z-index: 999;
+		transition: all 0.25s ease-in;
 
-	&.show{
-		transform: translateY(0);
-		top: 0;
+		&.show{
+			transform: translateY(0);
+			top: 0;
+		}
 	}
 }
 
@@ -97,28 +145,48 @@ p, ul{
 	z-index: 99;
 	background:#fff;
 
+	.container{
+		padding: 0;
+	}
+
 	nav{
-		display: block;
+		display: none;
 		border-top: 1px solid $green;
 		padding: 1.5em 0;
+		position: absolute;
+		background:rgba(#fff, 0.9);
+		@include media($small-inv){
+			display: block !important;
+			position: relative;
+		}
 		a{
 			color: #7C7C7C;
 			display: inline-block;
 			font-size: 0.7em;
-			text-align: center;
+			text-align: left;
 			text-transform: uppercase;
 			text-decoration: none;
-			margin: 0 4em;
+			margin: 0 2.5em;
 			font-weight: 300;
+			@include media($nav-weird){
+				margin: 0 4em;
+			}
+			@include media($small-inv){
+				text-align: center;
+			}
 
 			span{
 				width:3.5em;
 				height: 3.5em;
-				display: block;
+				display: inline-block;
 				border: 1px solid transparent;
 				border-radius: 50%;
 				padding: 0.5em;
 				margin: 0.5em auto;
+				vertical-align: middle;
+				@include media($small-inv){
+				display: block !important;
+			}
 			}
 
 			&:hover{
@@ -136,8 +204,60 @@ p, ul{
 }
 
 #logo{
-	height: 70px;
-	margin: 1em;
+	height: 2.5em;
+	max-width: 100%;
+	margin: 0;
+	padding: 0.25em;
+	margin-left: 10px;
+	@include media($small-inv){
+		margin: 1em;
+		height: 70px;
+	}
+}
+
+.logo-cont{
+	display: inline-block;
+	text-align: center;
+}
+
+.toggle-menu{
+	display: inline-block;
+	padding-top: 0.5em;
+	float: left;
+	width: 2.5em;
+	height: 2.5em;
+	padding: 0.25em 0.6em;
+	border-right: 1px solid #ddd;
+
+	@include media($small-inv){
+		display: none;
+	}
+	span{
+		border-top: 2px solid #333;
+		display: block;
+		margin-top: 4px;
+
+		&:first-child{
+			margin-top: 10px;
+		}
+	}
+}
+
+.contacto-movil{
+	display: inline-block;
+	float: right;
+	width: 2.5em;
+	height: 2.5em;
+	border-left: 1px solid #ddd;
+	padding: 0.35em;
+
+	svg{
+		width: 100%;
+	}
+
+	@include media($small-inv){
+		display: none;
+	}
 }
 
 .hero{
@@ -148,6 +268,10 @@ p, ul{
 	@include media($desktop){
 		padding-top: 34%;
 		width: 100%;
+	}
+
+	.container{
+		padding: 0;
 	}
 
 	.hero-slide{
@@ -219,9 +343,15 @@ p, ul{
 
 		a[class^="arrows-"]{
 			position: absolute;
-			top: 15%;
+			top: 0.8em;
 			svg{
-				height: 2em;
+				height: 1em;
+			}
+			@include media($small-inv){
+				top: 1.1em;
+				svg{
+					height: 2em;
+				}
 			}
 			@include media($desktop){
 				top: 30%;
@@ -231,10 +361,18 @@ p, ul{
 			}
 		}
 		.arrows-prev{
-			left: 1em;
+			left: 0;
 		}
 		.arrows-next{
-			right: 1em;
+			right: 0;
+		}
+		@include media($small-inv){
+			.arrows-prev{
+				left: 1em;
+			}
+			.arrows-next{
+				right: 1em;
+			}	
 		}
 	}
 }
@@ -243,20 +381,27 @@ section{
 	box-shadow: 0 0 0 4px #fff, 0 0 0 5px $green;
 	margin-bottom: 3px;
 	text-align: center;
-	padding: 3em 0;
+	padding: 1em 0;
+
+	@include media($small-inv){
+		padding: 3em 0;
+	}
 
 	&:last-of-type{
-		//box-shadow: 0 1px 0 2px #fff;
+		box-shadow: 0 1px 0 2px #fff;
 		margin-bottom: 0;
 	}
 
 	h1{
 		color: $green;
 		text-transform: uppercase;
-		font-size: 1.7em;
+		font-size: 1.2em;
 		line-height: 1.1;
 		font-weight: 400;
 		letter-spacing: 0.1rem;
+		@include media($small-inv){
+			font-size: 1.7em;
+		}
 	}
 
 	h2, h3{
@@ -269,12 +414,18 @@ section{
 	}
 
 	h2{
-		font-size: 1em;
+		font-size: 0.7em;
 		border-bottom: 1px solid $green;
+		@include media($small-inv){
+			font-size: 1em
+		}
 	}
 
 	h3{
-		font-size: 0.8em;
+		font-size: 0.7em;
+		@include media($small-inv){
+			font-size: 0.8em;
+		}
 	}
 }
 
@@ -320,8 +471,16 @@ section{
 
 		@include media($desktop){
 			float: left;
-			padding: 0 3em;
 		}
+	}
+}
+
+
+
+.item-wrap{
+	display: none;
+	@include media($small-inv){
+		display: block !important;
 	}
 }
 
@@ -344,13 +503,27 @@ section{
 	}
 }
 
+.carousel-item{
+	&:first-child{
+		.item:first-child{
+			.item-wrap{
+				display: block;
+			}
+		}
+	}
+}
+
 .client-carousel{
 	margin: 0 3em;
 
 	.carousel-item{
-		width: 13em;
+		width: 11em;
 		float: left;
 		margin-left: 2em;
+
+		@include media($small-inv){
+			width: 13em;
+		}
 
 		.client-logo{
 			height: 130px;
@@ -375,17 +548,54 @@ section{
 	}
 }
 
+.column-full.column-full{
+	@include media($small){
+		h1{
+		text-align: center;
+		background: none;
+		color: $green;
+		border-bottom: none;
+		box-shadow: none;
+		font-size: 1.1em;
+
+		&:before{
+			content: '';
+			border: none;
+		}
+
+		&:after{
+			content: 'NOTICIAS';
+			position: relative;
+			border: none;
+			display: block;
+			text-align: center;
+			font-size: 60%;
+			color: #7b7b7b;
+			width: 100%;
+			bottom: 0;
+			left: 0;
+		}
+	}
+	}
+}
+
 div[class^="column-"]{
 	position: relative;
-	background:#fff;
-	border: 1px solid #ddd;
-	box-shadow: 3px 3px 3px #ddd;
-	border-radius: 5px 5px 0 0;
 	overflow: hidden;
-	margin-bottom: 1em;
+
+	@include media($small-inv){
+		border-radius: 5px 5px 0 0;
+		margin-bottom: 1em;
+		border: 1px solid #ddd;
+		background:#fff;
+		box-shadow: 3px 3px 3px #ddd;
+
+		img{
+			border-radius: 5px 5px 0 0;
+		}
+	}
 
 	img{
-		border-radius: 5px 5px 0 0;
 		display: block;
 	}
 
@@ -401,7 +611,7 @@ div[class^="column-"]{
 	}
 
 	h1{
-		position: absolute;
+		position: relative;
 		font-size: 0.8em;
 		background:$green;
 		height: 2em;
@@ -413,6 +623,14 @@ div[class^="column-"]{
 		letter-spacing: 0.1rem;
 		text-align: left;
 		box-shadow: 0 2px 0 $dgreen;
+		margin-bottom: 1em;
+		cursor: pointer;
+
+		@include media($small-inv){
+			position: absolute;
+			margin-bottom: 0;
+			cursor: auto;
+		}
 
 		&:before{
 			content:'';
@@ -440,20 +658,33 @@ div[class^="column-"]{
 
 	}
 
+	.content-container{
+		background:#fff;
+	}
+
 	.content{
 		margin: 1em 1em 1em 2em;
 		border-left: 1px solid #ddd;
 		padding: 0 1em 0 1em;
 		font-size: 70%;
-		text-align: justify;
+		text-align: left;
+
+		@include media($desktop){
+			text-align: justify;
+		}
 
 		ul{
-			columns: 2;
 			margin-top: 1em;
 			li{
 				list-style: none outside;
 				position: relative;
 				padding-left: 2em;
+				font-weight: 300;
+
+				@include media($small-inv){
+					display: inline-block;
+					width: 49.5%;
+				}
 
 				&:before{
 					content: '';
@@ -550,6 +781,9 @@ div[class^="column-"]{
 		padding-left: 2em;
 		min-height: 0;
 		border-left: 1px solid $green;
+		margin-left: 0;
+		margin-right: 2em;
+		margin-top: 2em;
 
 		h4{
 			text-transform: uppercase;
@@ -578,6 +812,9 @@ div[class^="column-"]{
 }
 
 footer{
+	@include media($small-inv){
+
+	}
 	header{
 		border-top: 5px solid #fff;
 		background:$green;
@@ -641,12 +878,50 @@ form{
 	text-align: center;
 	color:#666;
 	p{
-		font-size: 70%;
-		line-height: 4;
+		font-size: 60%;
+		line-height: 1.2;
+		@include media($small-inv){
+			font-size: 70%;
+			line-height: 4;
+		}
+	}
+}
+
+.no-sho{
+	display: none;
+	@include media($small-inv){
+		display: block;
+	}
+}
+
+#quienes-somos{
+	@include media($small){
+		p{
+		padding: 1em;
+		font-size: 80%;
+		text-align: justify;
+	}
 	}
 }
 
 .contact-info{
 	font-size: 70%;
-	color: #666
+	color: #666;
+	strong{
+		color: #000;
+		font-weight: 400;
+	}
+	@include media($small-inv){
+		strong{
+		float: left;
+		display: block;
+		clear: left;
+		margin-right: 1em;
+		}
+		span{
+			display: block;
+			float: left;
+
+		}
+	}
 }
